@@ -71,7 +71,7 @@ path1 = args.path1
 path2 = args.path2
 
 if getFileSize(path1) != getFileSize(path2):
-    print "The files are different: File size is different."
+    print path1 + "\t!\t" + path2
     exit(0)
 
 f1 = open(path1, "rb")
@@ -81,8 +81,8 @@ for b1 in iter(f1.read(1)):
     b2 = f2.read(1)
 
     if b2 != b1:
-        print "The files are different: File contents are different."
+        print path1 + "\t!\t" + path2
         exit(0)
 
-print "The files are the same."
+print path1 + "\t=\t" + path2
 exit(1)
