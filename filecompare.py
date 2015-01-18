@@ -19,6 +19,10 @@ __copyright__ = 'Copyright 2015 Thomas Gohard'
 
 
 
+import argparse
+
+
+
 """
 global variables
 ----------------
@@ -58,6 +62,13 @@ def getFileSize(path):
 main code
 ---------
 """
+
+argparser = argparse.ArgumentParser(description="Compare files; tell whether they're the same or different.")
+argparser.add_argument("path1", type=str)
+argparser.add_argument("path2", type=str)
+args = argparser.parse_args()
+path1 = args.path1
+path2 = args.path2
 
 if getFileSize(path1) != getFileSize(path2):
     print "The files are different: File size is different."
