@@ -20,6 +20,7 @@ __copyright__ = 'Copyright 2015 Thomas Gohard'
 
 
 import argparse
+from os.path import isfile
 
 
 
@@ -60,6 +61,18 @@ def getFileSize(path):
 
     return size
 
+def err_FNF(path):
+    """Displays an error and exits when a file is not found.
+
+    Parameters:
+        path: A string containing the path to the file.
+
+    Returns:
+        -1 to indicate an error occurred.
+    """
+    print "Error: " + path + " does not exist."
+    exit(-1)
+
 
 
 """
@@ -81,6 +94,12 @@ if args.show_same_only:
     show_different = False
 if args.show_different_only:
     show_same = False
+
+if not isfile(path1):
+    err_FNF(path1)
+
+if not isfile(path2):
+    err_FNF(path2)
 
 if getFileSize(path1) != getFileSize(path2):
     if show_different:
